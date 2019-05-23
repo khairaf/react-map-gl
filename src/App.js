@@ -44,6 +44,7 @@ function App() {
       <Popup 
         latitude={selectedPark.geometry.coordinates[1]} 
         longitude={selectedPark.geometry.coordinates[0]}
+        onClose={ () => setSelectedPark(null) }
       >
         <div>
           <h2>{selectedPark.properties.NAME}</h2>
