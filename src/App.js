@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ReactMapGL, { Marker } from 'react-map-gl'
+import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import * as parkData from './data/data.json'
 
 function App() {
@@ -10,6 +10,8 @@ function App() {
     width: "100vw",
     height: "100vh",
   });
+
+  const [selectedPark, setSelectedPark] = useState(null); //set nilai awalnya null
 
   return (
     <div>
@@ -27,11 +29,31 @@ function App() {
           latitude={park.geometry.coordinates[1]} 
           longitude={park.geometry.coordinates[0]}
         >
-          <button className="marker-btn">
+          <button 
+            className="marker-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              setSelectedPark(park);
+            }}
+          >
             <img src="/skate.svg" alt="skateboard icon" />
           </button>
         </Marker>
       )) }
+      { selectedPark ?  (
+      <Popup 
+        latitude={selectedPark.geometry.coordinates[1]} 
+        longitude={selectedPark.geometry.coordinates[0]}
+      >
+        <div>
+          <h2>{selectedPark.properties.NAME}</h2>
+          <p>{selectedPark.properties.DESCRIPTIO}</p>
+        </div>
+      </Popup> 
+      ) : null }
+     
+
+
      </ReactMapGL>
     </div>
   );
