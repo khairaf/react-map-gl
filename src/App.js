@@ -20,6 +20,11 @@ function App() {
       }
     };
     window.addEventListener("keydown", listener); //ketika ada keydown panggil listener()
+
+    //ketika komponen unmounted
+    return () => {
+      window.removeEventListener("keydown", listener);
+    };
   }, []);
 
   return (
@@ -45,7 +50,7 @@ function App() {
               setSelectedPark(park);
             }}
           >
-            <img src="/skate.svg" alt="skateboard icon" />
+            <img src="/icons8-ice-skate-64.png" alt="skateboard icon" />
           </button>
         </Marker>
       )) }
