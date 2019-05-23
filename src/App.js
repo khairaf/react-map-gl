@@ -27,7 +27,9 @@ function App() {
           latitude={park.geometry.coordinates[1]} 
           longitude={park.geometry.coordinates[0]}
         >
-          <div>SKATE</div>
+          <button className="marker-btn">
+            <img src="/skate.svg" alt="skateboard icon" />
+          </button>
         </Marker>
       )) }
      </ReactMapGL>
