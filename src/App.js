@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import * as parkData from './data/data.json'
 
@@ -12,6 +12,15 @@ function App() {
   });
 
   const [selectedPark, setSelectedPark] = useState(null); //set nilai awalnya null
+
+  useEffect(() => {
+    const listener = e => {
+      if(e.key === "Escape") {
+        setSelectedPark(null);
+      }
+    };
+    window.addEventListener("keydown", listener); //ketika ada keydown panggil listener()
+  }, []);
 
   return (
     <div>
