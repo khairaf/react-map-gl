@@ -22,3 +22,10 @@ onViewportChange={viewport => {
 biar bisa di drag dan zoom mapnya
 
 mapStyle="mapbox://styles/mapbox/outdoors-v10" untuk add style di mpnya reference: https://docs.mapbox.com/mapbox-gl-js/api/
+
+caraa konfigurasi untuk deploy ke Now:
+  perhatikan file package.json, .nowignore, now.json.... ada tambahan configurasi disana.
+
+lalu di root directory jalankan now.
+
+https://react-map-gl.khairaf.now.sh/
